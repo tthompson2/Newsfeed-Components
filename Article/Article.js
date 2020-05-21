@@ -85,8 +85,75 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+
+  {
+   title: 'New page',
+   date: 'Oct 10, 2019',
+   firstParagraph: `odor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor`,
+   secondParagraph: `em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel 
+   Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tai`,
+   thirdParagraph: `elit. Raichu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sandshrew Lorem ipsum dolor sit amet, consectetur adipiscing
+   elit. Sandslash Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur
+   adipiscing elit. Nidorina Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoqueen Lorem ipsum dolor sit amet,
+   consectetur adipiscing elit. Nidoran Lorem ipsum dolor s`,
+  } 
 ];
+
+let container = document.querySelector('.articles');
+
+function componentCreator(date, title, fP, sP, tP) {
+
+  const divCreator = document.createElement('div');
+  const dateParagraphCreator = document.createElement('p');
+  const spanCreator = document.createElement('span');
+
+  dateParagraphCreator.textContent = date;
+
+  const paragraphElement1 = document.createElement('p');
+  const paragraphElement2 = document.createElement('p');
+  const paragraphElement3 = document.createElement('p');
+
+  paragraphElement1.textContent = fP;
+  paragraphElement2.textContent = sP;
+  paragraphElement3.textContent = tP;  
+
+  dateParagraphCreator.textContent = date;
+
+  const secondHeader = document.createElement('h2');
+
+  secondHeader.textContent = title;
+
+  //divCreator.appendChild(spanCreator);
+    
+   divCreator.classList.add('article');
+   spanCreator.classList.add('expandButton');
+
+   container.appendChild(divCreator);
+   divCreator.appendChild(secondHeader);
+   divCreator.appendChild(dateParagraphCreator);
+   divCreator.appendChild(paragraphElement1);
+   divCreator.appendChild(paragraphElement2);
+   divCreator.appendChild(paragraphElement3);
+   divCreator.appendChild(spanCreator);
+
+  spanCreator.addEventListener('click', () => {
+   
+  divCreator.classList.toggle('article-open');
+  });
+
+   spanCreator.textContent = 'Read More';
+
+   console.log(container);
+
+   return container;
+}
+
+const articleCreator = data.forEach ((element) => {
+
+  componentCreator(element.date, element.title, element.firstParagraph, element.secondParagraph, element.thirdParagraph);
+
+});
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
